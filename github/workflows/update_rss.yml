@@ -1,1 +1,32 @@
+name: Update RSS Feed
+
+on:
+  push:
+    paths:
+      - 'path/to/your/file.mp3'
+  schedule:
+    - cron: '0 * * * *' # runs every hour
+
+jobs:
+  update-rss:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install requests PyGithub
+
+      - name: Run script
+        run: |
+          python update_rss_feed.py
+        env:
+          DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+          GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
 
