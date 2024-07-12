@@ -49,7 +49,7 @@ def main():
     repo = g.get_repo(GITHUB_REPO)
     
     # Dropbox file path (ensure the correct path is provided)
-    dropbox_file_path = '/MB3-15a-2494-Fasting-on-Erev-Shabbos.mp3'
+    dropbox_file_path = '/MB/'
     file_name = 'MB3 14a 249:2a No big meals on Erev Shabbos unless a timely seudas mitzvah.mp3'  # Example file name
     
     # Extract detailed information from file name
