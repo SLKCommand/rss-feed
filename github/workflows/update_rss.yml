@@ -3,7 +3,7 @@ name: Update RSS Feed
 on:
   push:
     paths:
-      - 'path/to/your/file.mp3'
+      - 'Documents/Torah Sheir/MB/file.mp3'  # Replace with the actual path to your file in Dropbox
   schedule:
     - cron: '0 * * * *' # runs every hour
 
@@ -29,4 +29,3 @@ jobs:
         env:
           DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
           GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-
