@@ -3,9 +3,9 @@ name: Update RSS Feed
 on:
   push:
     paths:
-      - 'Documents/Torah Sheir/MB/file.mp3'  # Replace with the actual path to your file in Dropbox
+      - '**/*.mp3'  # Triggers on any MP3 file change
   schedule:
-    - cron: '0 * * * *' # runs every hour
+    - cron: '0 * * * *' # Runs every hour
 
 jobs:
   update-rss:
