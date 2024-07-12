@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>My RSS Feed</title>
+    <link>http://SLKCommand.github.io/rss-feed/feed.xml</link>
+    <description>RSS feed for new MP3 recordings</description>
+    <item>
+      <title>Example MP3</title>
+      <link>http://SLKCommand.github.io/rss-feed/example.mp3</link>
+      <description>Description of the MP3</description>
+    </item>
+  </channel>
+</rss>
