@@ -7,7 +7,7 @@ import os
 # Configuration
 DROPBOX_ACCESS_TOKEN = os.getenv('DROPBOX_ACCESS_TOKEN')
 GITHUB_ACCESS_TOKEN = os.getenv('GH_ACCESS_TOKEN')
-GITHUB_REPO = 'YOUR_GITHUB_USERNAME/rss-feed'
+GITHUB_REPO = 'SLKCommand/rss-feed'
 GITHUB_FILE_PATH = 'feed.xml'  # Adjust if your feed XML file has a different name
 
 def create_dropbox_shared_link(file_path):
@@ -34,13 +34,26 @@ def update_github_file(repo, file_path, content, sha, commit_message):
     encoded_content = base64.b64encode(content.encode('utf-8')).decode('utf-8')
     repo.update_file(file_path, commit_message, encoded_content, sha)
 
+def extract_info_from_filename(file_name):
+    parts = file_name.split(' ')
+    volume = parts[0]
+    page = parts[1]
+    siman = parts[2].split(':')[0]
+    seif = parts[2].split(':')[1]
+    title = ' '.join(parts[3:])
+    return volume, page, siman, seif, title
+
 def main():
     # Initialize GitHub client
     g = Github(GITHUB_ACCESS_TOKEN)
     repo = g.get_repo(GITHUB_REPO)
     
     # Dropbox file path (ensure the correct path is provided)
-    dropbox_file_path = '/path/to/your/file.mp3'
+    dropbox_file_path = '/Documents/Torah Sheir/MB/file.mp3'
+    file_name = 'MB3 14a 249:2a No big meals on Erev Shabbos unless a timely seudas mitzvah.mp3'  # Example file name
+    
+    # Extract detailed information from file name
+    volume, page, siman, seif, title = extract_info_from_filename(file_name)
     
     # Create Dropbox shared link
     shared_link = create_dropbox_shared_link(dropbox_file_path)
@@ -52,9 +65,9 @@ def main():
     # Create new RSS item
     new_item = f"""
     <item>
-        <title>New Recording</title>
+        <title>{title}</title>
         <link>{shared_link}</link>
-        <description>New recording added to the RSS feed.</description>
+        <description>Volume: {volume}, Page: {page}, Siman: {siman}, Seif: {seif}</description>
     </item>
     """
     
